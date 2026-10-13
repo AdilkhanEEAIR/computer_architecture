@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HTML demo — Dzhanteliev Adilkhan EEAIR24</title>
+    <style>
+      body {
+        font-family: Georgia, "Times New Roman", serif;
+        background: #e9eef2;
+        display: flex;
+        justify-content: center;
+        padding: 40px 16px;
+      }
+      form {
+        background: #fff;
+        border: 2px solid #2b4a63;
+        padding: 24px 28px;
+        width: 100%;
+        max-width: 340px;
+      }
+      h1 {
+        margin: 0 0 16px;
+        font-size: 24px;
+        color: #2b4a63;
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+      }
+      input[type="text"],
+      select {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 6px 8px;
+        margin-top: 4px;
+        font: inherit;
+      }
+      .buttons {
+        margin-top: 18px;
+        display: flex;
+        gap: 8px;
+      }
+      button {
+        flex: 1;
+        padding: 8px;
+        font: inherit;
+        cursor: pointer;
+      }
+      button[type="submit"] {
+        background: #2b4a63;
+        color: #fff;
+        border: none;
+      }
+      :focus-visible {
+        outline: 3px solid #e0a32e;
+        outline-offset: 2px;
+      }
+      #result {
+        margin-top: 16px;
+        color: #1d5fa0;
+        min-height: 2.6em;
+      }
+      #result.error {
+        color: #b3261e;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="studentForm">
+      <h1>Student form</h1>
+      <label for="name">Name</label>
+      <input type="text" id="name" autocomplete="off" />
+      <label for="group">Group</label>
+      <input type="text" id="group" autocomplete="off" />
+      <label for="lang">Favourite language</label>
+      <select id="lang">
+        <option>Python</option>
+        <option>Java</option>
+        <option>JavaScript</option>
+      </select>
+      <div class="buttons">
+        <button type="submit">Submit</button>
+        <button type="reset">Clear</button>
+      </div>
+      <p id="result" aria-live="polite"></p>
+    </form>
+    <script>
+      const form = document.getElementById("studentForm");
+      const result = document.getElementById("result");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.getElementById("name").value.trim();
+        const group = document.getElementById("group").value.trim();
+        const lang = document.getElementById("lang").value;
+        if (!name || !group) {
+          result.className = "error";
+          result.textContent = "Fill in both name and group.";
+          return;
+        }
+        result.className = "";
+        result.textContent = `Hello, ${name} from ${group}! Favourite language: ${lang}`;
+      });
+      form.addEventListener("reset", () => {
+        result.textContent = "";
+      });
+    </script>
+  </body>
+</html>
