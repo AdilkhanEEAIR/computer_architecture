@@ -1,0 +1,12 @@
+# Скомпилированные файлы Java
+*.class
+
+# Кэш Python
+__pycache__/
+*.pyc
+
+# Служебные файлы Windows и редакторов
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
